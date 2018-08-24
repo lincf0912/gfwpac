@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -29,20 +30,20 @@ func main() {
 
 	b, err := ioutil.ReadFile(*flagTemplate)
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to read template file: %v", err))
 	}
 
 	t := template.Must(template.New("pac").Parse(string(b)))
 
 	r, err := http.Get("https://git.io/gfwlist")
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to get gfwlist: %v", err))
 	}
 	defer r.Body.Close()
 
 	d, err := ioutil.ReadAll(base64.NewDecoder(base64.StdEncoding, r.Body))
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to decode gfwlist: %v", err))
 	}
 
 	rs := strings.Split(string(d), "\n")
@@ -70,6 +71,6 @@ func main() {
 		buf2.Bytes(),
 		0644,
 	); err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to write gfwpac file: %v", err))
 	}
 }
