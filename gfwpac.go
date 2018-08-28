@@ -57,14 +57,14 @@ func main() {
 		}
 	}
 
-	buf := &bytes.Buffer{}
-	t.Execute(buf, map[string]interface{}{
+	buf := bytes.Buffer{}
+	t.Execute(&buf, map[string]interface{}{
 		"Rules":   "[" + strings.Join(rs, ",") + "]",
 		"Proxies": "\"" + *flagProxies + "\"",
 	})
 
-	buf2 := &bytes.Buffer{}
-	js.DefaultMinifier.Minify(minify.New(), buf2, buf, nil)
+	buf2 := bytes.Buffer{}
+	js.DefaultMinifier.Minify(minify.New(), &buf2, &buf, nil)
 
 	if err := ioutil.WriteFile(
 		*flagOutput,
