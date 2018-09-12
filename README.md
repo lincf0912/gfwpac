@@ -21,12 +21,12 @@ updated.**
 ## Community
 
 If you want to discuss this project, or ask questions about it, simply post
-questions or ideas [here](https://github.com/sheng/gfwpac/issues).
+questions or ideas [here](https://github.com/aofei/gfwpac/issues).
 
 ## Contributing
 
 If you want to help build this project, simply send pull requests
-[here](https://github.com/sheng/gfwpac/pulls).
+[here](https://github.com/aofei/gfwpac/pulls).
 
 ## License
 
