@@ -1,4 +1,4 @@
-module github.com/aofei/gfwpac
+module github.com/lincf0912/gfwpac
 
 require (
 	github.com/tdewolff/minify v2.3.5+incompatible
